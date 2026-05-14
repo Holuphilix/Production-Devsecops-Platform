@@ -780,3 +780,195 @@ The completed implementation included:
 - Application structure verification
 
 This application now serves as the primary workload that will support subsequent containerization workflows, Kubernetes orchestration, CI/CD automation, DevSecOps security enforcement, monitoring integration, and platform operational validation throughout the remaining implementation phases.
+
+## 🐳 Task 3 — Containerization and Runtime Standardization
+
+### 🎯 Objective
+
+The objective of this task is to containerize the platform sample application using Docker in order to establish standardized runtime environments across the platform engineering ecosystem.
+
+Containerization enables:
+
+- Consistent application runtime behavior
+- Environment reproducibility
+- Kubernetes deployment readiness
+- Platform portability
+- Scalable workload orchestration
+- Standardized cloud-native deployments
+- Runtime isolation and dependency consistency
+
+This implementation establishes the foundational container runtime layer required for Kubernetes orchestration, CI/CD automation, DevSecOps security scanning, and platform deployment workflows throughout the remaining project phases.
+
+### 📂 Navigating into the Application Directory
+
+Run the following command to move into the application directory.
+
+```bash
+cd app
+```
+
+### 📝 Creating the Dockerfile
+
+Run the following command to create the Dockerfile.
+
+```bash
+touch Dockerfile
+```
+
+### 📝 Opening the Dockerfile
+
+Run the following command to open the Dockerfile.
+
+```bash
+nano Dockerfile
+```
+
+Add the following Docker configuration into the `Dockerfile`.
+
+```dockerfile
+FROM node:20-alpine
+
+WORKDIR /app
+
+COPY package*.json ./
+
+RUN npm install
+
+COPY . .
+
+EXPOSE 3000
+
+CMD ["npm", "start"]
+```
+
+### 📸 Dockerfile Configuration Validation
+
+The image below verifies successful creation of the Dockerfile used for containerizing the platform application.
+
+![Dockerfile Configuration Validation](images/dockerfile-configuration-validation.png)
+
+### 🛑 Stopping the Local Node.js Runtime
+
+Before building the container image, stop the currently running local Node.js application.
+
+Press the following keyboard shortcut inside the terminal running the Node.js application.
+
+```text
+CTRL + C
+```
+
+### 🏗️ Building the Docker Container Image
+
+Run the following command to build the Docker container image.
+
+```bash
+docker build -t production-devsecops-platform:v1 .
+```
+
+### 📸 Docker Image Build Validation
+
+The output below confirms successful creation of the Docker container image for the platform application.
+
+![Docker Image Build Validation](images/docker-image-build-validation.png)
+
+### 📦 Verifying Available Docker Images
+
+Run the following command to verify the newly created Docker image.
+
+```bash
+docker images
+```
+
+### 📸 Docker Image Verification
+
+The output below confirms successful availability of the platform container image within the Docker runtime environment.
+
+![Docker Image Verification](images/docker-image-verification.png)
+
+### 🚀 Running the Docker Container
+
+Run the following command to start the containerized platform application.
+
+```bash
+docker run -d -p 3000:3000 --name production-devsecops-container production-devsecops-platform:v1
+```
+
+### 📸 Docker Container Runtime Validation
+
+The output below confirms successful startup of the platform container runtime environment.
+
+![Docker Container Runtime Validation](images/docker-container-runtime-validation.png)
+
+### 📦 Verifying Running Docker Containers
+
+Run the following command to verify active Docker containers.
+
+```bash
+docker ps
+```
+
+### 📸 Active Docker Container Validation
+
+The output below verifies that the platform application container is actively running within the Docker runtime environment.
+
+![Active Docker Container Validation](images/active-docker-container-validation.png)
+
+### 🌐 Validating Browser Accessibility Through Docker
+
+Open the following URL within the browser.
+
+```text
+http://localhost:3000
+```
+
+### 📸 Dockerized Application Browser Validation
+
+The image below confirms successful browser accessibility of the containerized platform application.
+
+![Dockerized Application Browser Validation](images/dockerized-application-browser-validation.png)
+
+### ❤️ Validating the Dockerized Health Endpoint
+
+Open the following URL within the browser.
+
+```text
+http://localhost:3000/health
+```
+
+### 📸 Dockerized Health Endpoint Validation
+
+The output below confirms successful operation of the containerized platform health validation endpoint.
+
+![Dockerized Health Endpoint Validation](images/dockerized-health-endpoint-validation.png)
+
+### 📜 Inspecting Docker Container Logs
+
+Run the following command to inspect container runtime logs.
+
+```bash
+docker logs production-devsecops-container
+```
+
+### 📸 Docker Container Logs Validation
+
+The output below verifies successful runtime logging from the platform container environment.
+
+![Docker Container Logs Validation](images/docker-container-logs-validation.png)
+
+### 📘 Task 3 Summary
+
+In this task, the platform sample application was successfully containerized using Docker to establish a standardized cloud-native runtime environment.
+
+The completed implementation included:
+
+- Dockerfile creation
+- Container image configuration
+- Docker image build validation
+- Container runtime deployment
+- Docker image verification
+- Browser accessibility testing
+- Health endpoint validation
+- Container runtime log inspection
+
+This implementation now provides the foundational container runtime layer required for Kubernetes workload orchestration, CI/CD automation, DevSecOps security enforcement, vulnerability scanning, and cloud-native deployment standardization throughout the remaining platform engineering lifecycle.
+
