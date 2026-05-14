@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: production-devsecops-service
+  namespace: devsecops-platform
+spec:
+  selector:
+    app: production-devsecops-platform
+
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+
+  type: NodePort

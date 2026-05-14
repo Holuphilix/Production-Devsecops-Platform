@@ -972,3 +972,290 @@ The completed implementation included:
 
 This implementation now provides the foundational container runtime layer required for Kubernetes workload orchestration, CI/CD automation, DevSecOps security enforcement, vulnerability scanning, and cloud-native deployment standardization throughout the remaining platform engineering lifecycle.
 
+## ☸️ Task 4 — Kubernetes Workload Orchestration
+
+### 🎯 Objective
+
+The objective of this task is to deploy the containerized platform application into the Kubernetes environment provisioned using Kind.
+
+This phase establishes the foundational Kubernetes orchestration layer responsible for:
+
+- Container workload scheduling
+- Application scalability
+- Kubernetes service exposure
+- Cloud-native deployment standardization
+- Runtime orchestration
+- Platform workload management
+- Kubernetes operational validation
+
+The implementation focuses on deploying standardized Kubernetes resources capable of supporting secure cloud-native workload operations throughout the platform engineering lifecycle.
+
+### 📂 Navigating into the Kubernetes Directory
+
+Run the following command to move into the Kubernetes configuration directory.
+
+```bash
+cd ../kubernetes
+```
+
+### 🏷️ Creating the Kubernetes Namespace Configuration
+
+Run the following command to open the namespace configuration file.
+
+```bash
+nano namespace.yaml
+```
+
+Add the following configuration into the `namespace.yaml` file.
+
+```yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: devsecops-platform
+```
+
+### 📸 Kubernetes Namespace Configuration Validation
+
+The image below verifies successful creation of the Kubernetes namespace configuration.
+
+![Kubernetes Namespace Configuration Validation](images/kubernetes-namespace-configuration-validation.png)
+
+### 🚀 Creating the Kubernetes Deployment Configuration
+
+Run the following command to open the deployment configuration file.
+
+```bash
+nano deployment.yaml
+```
+
+Add the following configuration into the `deployment.yaml` file.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: production-devsecops-deployment
+  namespace: devsecops-platform
+spec:
+  replicas: 2
+
+  selector:
+    matchLabels:
+      app: production-devsecops-platform
+
+  template:
+    metadata:
+      labels:
+        app: production-devsecops-platform
+
+    spec:
+      containers:
+      - name: production-devsecops-container
+
+        image: production-devsecops-platform:v1
+
+        imagePullPolicy: Never
+
+        ports:
+        - containerPort: 3000
+```
+
+### 📸 Kubernetes Deployment Configuration Validation
+
+The image below confirms successful creation of the Kubernetes deployment manifest.
+
+![Kubernetes Deployment Configuration Validation](images/kubernetes-deployment-configuration-validation.png)
+
+### 🌐 Creating the Kubernetes Service Configuration
+
+Run the following command to open the Kubernetes service configuration file.
+
+```bash
+nano service.yaml
+```
+
+Add the following configuration into the `service.yaml` file.
+
+```yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: production-devsecops-service
+  namespace: devsecops-platform
+spec:
+  selector:
+    app: production-devsecops-platform
+
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+
+  type: NodePort
+```
+
+### 📸 Kubernetes Service Configuration Validation
+
+The image below verifies successful creation of the Kubernetes service manifest.
+
+![Kubernetes Service Configuration Validation](images/kubernetes-service-configuration-validation.png)
+
+### 📦 Loading the Docker Image into the Kind Cluster
+
+Run the following command to load the locally built Docker image into the Kind Kubernetes cluster.
+
+```bash
+kind load docker-image production-devsecops-platform:v1 --name devsecops-platform
+```
+
+### 📸 Kind Docker Image Load Validation
+
+The output below confirms successful loading of the Docker image into the Kubernetes cluster runtime.
+
+![Kind Docker Image Load Validation](images/kind-docker-image-load-validation.png)
+
+### ☸️ Deploying the Kubernetes Namespace
+
+Run the following command to deploy the namespace resource.
+
+```bash
+kubectl apply -f namespace.yaml
+```
+
+### 📸 Kubernetes Namespace Deployment Validation
+
+The output below confirms successful deployment of the Kubernetes namespace resource.
+
+![Kubernetes Namespace Deployment Validation](images/kubernetes-namespace-deployment-validation.png)
+
+### 🚀 Deploying the Kubernetes Deployment Resource
+
+Run the following command to deploy the workload deployment resource.
+
+```bash
+kubectl apply -f deployment.yaml
+```
+
+### 📸 Kubernetes Deployment Resource Validation
+
+The output below confirms successful deployment of the Kubernetes workload deployment resource.
+
+![Kubernetes Deployment Resource Validation](images/kubernetes-deployment-resource-validation.png)
+
+### 🌐 Deploying the Kubernetes Service Resource
+
+Run the following command to deploy the Kubernetes service resource.
+
+```bash
+kubectl apply -f service.yaml
+```
+
+### 📸 Kubernetes Service Deployment Validation
+
+The output below confirms successful deployment of the Kubernetes service resource.
+
+![Kubernetes Service Deployment Validation](images/kubernetes-service-deployment-validation.png)
+
+### 📦 Verifying Kubernetes Pods
+
+Run the following command to verify Kubernetes workload pods.
+
+```bash
+kubectl get pods -n devsecops-platform
+```
+
+### 📸 Kubernetes Pod Validation
+
+The output below verifies successful deployment and operational readiness of the Kubernetes workload pods.
+
+![Kubernetes Pod Validation](images/kubernetes-pod-validation.png)
+
+### 🌐 Verifying Kubernetes Services
+
+Run the following command to verify Kubernetes service exposure.
+
+```bash
+kubectl get svc -n devsecops-platform
+```
+
+### 📸 Kubernetes Service Validation
+
+The output below confirms successful exposure of the Kubernetes platform service.
+
+![Kubernetes Service Validation](images/kubernetes-service-validation.png)
+
+### 🖥️ Forwarding the Kubernetes Service Port
+
+Run the following command to expose the Kubernetes service locally.
+
+```bash
+kubectl port-forward svc/production-devsecops-service 3000:80 -n devsecops-platform
+```
+
+### 📸 Kubernetes Port Forward Validation
+
+The output below confirms successful local port forwarding for Kubernetes service accessibility.
+
+![Kubernetes Port Forward Validation](images/kubernetes-port-forward-validation.png)
+
+### 🌐 Validating Kubernetes Application Accessibility
+
+Open the following URL within the browser.
+
+```text
+http://localhost:3000
+```
+
+### 📸 Kubernetes Browser Accessibility Validation
+
+The image below confirms successful browser accessibility of the Kubernetes-deployed platform application.
+
+![Kubernetes Browser Accessibility Validation](images/kubernetes-browser-accessibility-validation.png)
+
+### ❤️ Validating the Kubernetes Health Endpoint
+
+Open the following URL within the browser.
+
+```text
+http://localhost:3000/health
+```
+
+### 📸 Kubernetes Health Endpoint Validation
+
+The output below confirms successful operation of the Kubernetes-deployed platform health endpoint.
+
+![Kubernetes Health Endpoint Validation](images/kubernetes-health-endpoint-validation.png)
+
+### 📦 Verifying Kubernetes Deployment Resources
+
+Run the following command to validate Kubernetes deployment resources.
+
+```bash
+kubectl get deployments -n devsecops-platform
+```
+
+### 📸 Kubernetes Deployment Resource Verification
+
+The output below confirms successful Kubernetes deployment orchestration and replica availability.
+
+![Kubernetes Deployment Resource Verification](images/kubernetes-deployment-resource-verification.png)
+
+### 📘 Task 4 Summary
+
+In this task, the containerized platform application was successfully deployed into the Kubernetes environment provisioned through Kind.
+
+The completed implementation included:
+
+- Kubernetes namespace creation
+- Kubernetes deployment configuration
+- Kubernetes service configuration
+- Docker image integration into Kind
+- Kubernetes workload deployment
+- Service exposure configuration
+- Kubernetes pod validation
+- Browser accessibility testing
+- Kubernetes health endpoint validation
+- Kubernetes deployment verification
+
+This implementation now establishes the foundational Kubernetes orchestration layer required for CI/CD automation, DevSecOps security integration, observability monitoring, runtime scaling, and cloud-native platform operations throughout the remaining implementation phases.
