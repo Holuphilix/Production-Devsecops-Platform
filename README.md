@@ -573,3 +573,210 @@ The completed setup included:
 - Platform operational readiness verification
 
 This environment now provides the foundational infrastructure required for secure application delivery, Kubernetes orchestration, DevSecOps automation, infrastructure provisioning, observability integration, and platform operations throughout the remaining project implementation phases.
+
+## 🧩 Task 2 — Building the Platform Sample Application
+
+### 🎯 Objective
+
+The objective of this task is to build the foundational sample application that will operate as the primary workload throughout the platform engineering lifecycle.
+
+This application will serve as the core workload used for:
+
+- Containerization workflows
+- Kubernetes workload orchestration
+- CI/CD automation
+- DevSecOps security validation
+- Infrastructure deployment testing
+- Platform observability integration
+- Runtime monitoring
+- Operational validation
+
+The implementation focuses on establishing a lightweight Node.js application capable of supporting secure cloud-native deployment workflows within the platform environment.
+
+### 📂 Navigating into the Application Directory
+
+Run the following command to move into the application directory.
+
+```bash
+cd app
+```
+
+### ⚙️ Initializing the Node.js Application
+
+Run the following command to initialize the Node.js application.
+
+```bash
+npm init -y
+```
+
+### 📸 Node.js Application Initialization Validation
+
+The output below confirms successful initialization of the Node.js application package configuration.
+
+![Node.js Application Initialization Validation](images/nodejs-application-initialization-validation.png)
+
+### 📦 Installing Express Framework
+
+Install the Express framework required for building the platform sample application.
+
+```bash
+npm install express
+```
+
+### 📸 Express Framework Installation Validation
+
+The output below confirms successful installation of the Express framework dependency.
+
+![Express Framework Installation Validation](images/express-framework-installation-validation.png)
+
+### 📝 Creating the Application Entry File
+
+Run the following command to create the primary application entry file.
+
+```bash
+touch app.js
+```
+
+### 📝 Opening the Application File
+
+Run the following command to open the application file.
+
+```bash
+nano app.js
+```
+
+Add the following application configuration into the `app.js` file.
+
+```javascript
+const express = require('express');
+
+const app = express();
+
+const PORT = 3000;
+
+app.get('/', (req, res) => {
+    res.send('Production-Grade DevSecOps CI/CD Platform');
+});
+
+app.get('/health', (req, res) => {
+    res.status(200).json({
+        status: 'healthy',
+        platform: 'Production-Grade DevSecOps CI/CD Platform',
+        environment: 'local'
+    });
+});
+
+app.listen(PORT, () => {
+    console.log(`Platform application running on port ${PORT}`);
+});
+```
+
+### 📸 Application Source Code Validation
+
+The image below verifies successful creation of the Node.js platform application source code.
+
+![Application Source Code Validation](images/application-source-code-validation.png)
+
+### ⚙️ Updating the package.json Start Script
+
+Run the following command to open the `package.json` file.
+
+```bash
+nano package.json
+```
+
+Replace the existing scripts section with the following configuration.
+
+```json
+{
+  "name": "production-devsecops-platform",
+  "version": "1.0.0",
+  "description": "Production Grade DevSecOps CI/CD Platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
+```
+
+### 📸 package.json Configuration Validation
+
+The output below confirms successful configuration of the application runtime script.
+
+![package.json Configuration Validation](images/package-json-configuration-validation.png)
+
+### 🚀 Starting the Platform Application
+
+Run the following command to start the Node.js platform application.
+
+```bash
+npm start
+```
+
+### 📸 Local Application Runtime Validation
+
+The output below confirms that the platform sample application is successfully running within the Ubuntu local environment.
+
+![Local Application Runtime Validation](images/local-application-runtime-validation.png)
+
+### 🌐 Validating Browser Accessibility
+
+Open the following URL within the browser.
+
+```text
+http://localhost:3000
+```
+
+### 📸 Browser Application Accessibility Validation
+
+The image below verifies successful browser accessibility of the platform sample application.
+
+![Browser Application Accessibility Validation](images/browser-application-accessibility-validation.png)
+
+### ❤️ Validating the Health Endpoint
+
+Open the following URL within the browser.
+
+```text
+http://localhost:3000/health
+```
+
+### 📸 Health Endpoint Validation
+
+The output below confirms successful operation of the platform health validation endpoint.
+
+![Health Endpoint Validation](images/health-endpoint-validation.png)
+
+### 🧪 Verifying the Application Directory Structure
+
+Run the following command to validate the updated application directory structure.
+
+```bash
+tree
+```
+
+### 📸 Application Directory Structure Validation
+
+The output below verifies successful creation of the Node.js application files, dependency packages, and runtime configuration.
+
+![Application Directory Structure Validation](images/application-directory-structure-validation.png)
+
+### 📘 Task 2 Summary
+
+In this task, the foundational platform sample application was successfully developed and validated within the Ubuntu local environment.
+
+The completed implementation included:
+
+- Node.js application initialization
+- Express framework installation
+- Platform application source code creation
+- Runtime configuration setup
+- Application startup validation
+- Browser accessibility testing
+- Health endpoint implementation
+- Application structure verification
+
+This application now serves as the primary workload that will support subsequent containerization workflows, Kubernetes orchestration, CI/CD automation, DevSecOps security enforcement, monitoring integration, and platform operational validation throughout the remaining implementation phases.

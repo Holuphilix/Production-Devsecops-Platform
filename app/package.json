@@ -1,0 +1,12 @@
+{
+  "name": "production-devsecops-platform",
+  "version": "1.0.0",
+  "description": "Production Grade DevSecOps CI/CD Platform",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
