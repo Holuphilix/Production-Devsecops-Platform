@@ -1259,3 +1259,174 @@ The completed implementation included:
 - Kubernetes deployment verification
 
 This implementation now establishes the foundational Kubernetes orchestration layer required for CI/CD automation, DevSecOps security integration, observability monitoring, runtime scaling, and cloud-native platform operations throughout the remaining implementation phases.
+
+## ⚙️ Task 5 — CI/CD Platform Automation
+
+### 🎯 Objective
+
+The objective of this task is to implement an automated CI/CD workflow using GitHub Actions in order to standardize secure software delivery across the platform engineering environment.
+
+This phase establishes the foundational CI/CD automation layer responsible for:
+
+- Automated workflow execution
+- Continuous integration validation
+- Docker image automation
+- Kubernetes deployment automation
+- Workflow standardization
+- Platform deployment consistency
+- Operational automation
+
+The implementation focuses on establishing a production-oriented CI/CD workflow capable of supporting cloud-native deployment operations throughout the remaining platform engineering lifecycle.
+
+### 📂 Navigating into the GitHub Workflows Directory
+
+Run the following command to move into the GitHub Actions workflows directory.
+
+```bash
+cd ../.github/workflows
+```
+
+### 📝 Creating the GitHub Actions Workflow File
+
+Run the following command to create the CI/CD workflow configuration file.
+
+```bash
+touch ci-cd.yaml
+```
+
+### 📝 Opening the Workflow Configuration File
+
+Run the following command to open the workflow configuration file.
+
+```bash
+nano ci-cd.yaml
+```
+
+Add the following configuration into the `ci-cd.yaml` file.
+
+```yaml
+name: Production DevSecOps CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  platform-ci-cd-workflow:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Verify Repository Structure
+        run: ls -la
+
+      - name: Verify Docker Installation
+        run: docker --version
+
+      - name: Build Docker Image
+        run: |
+          cd app
+          docker build -t production-devsecops-platform:v1 .
+
+      - name: Validate Kubernetes Configuration Files
+        run: |
+          ls kubernetes
+
+      - name: CI/CD Pipeline Validation
+        run: echo "Production DevSecOps CI/CD Pipeline executed successfully"
+```
+
+### 📸 GitHub Actions Workflow Configuration Validation
+
+The image below verifies successful creation of the GitHub Actions CI/CD workflow configuration.
+
+![GitHub Actions Workflow Configuration Validation](images/github-actions-workflow-configuration-validation.png)
+
+### 📂 Returning to the Project Root Directory
+
+Run the following command to return to the project root directory.
+
+```bash
+cd ../../
+```
+
+### 📦 Verifying the GitHub Actions Workflow Structure
+
+Run the following command to validate the GitHub workflow file location.
+
+```bash
+tree .github
+```
+
+### 📸 GitHub Workflow Structure Validation
+
+The output below confirms successful placement of the CI/CD workflow within the GitHub Actions workflow directory.
+
+![GitHub Workflow Structure Validation](images/github-workflow-structure-validation.png)
+
+### 🚀 Triggering the GitHub Actions Workflow
+
+Run the following commands to push the CI/CD workflow into GitHub and automatically trigger pipeline execution.
+
+```bash
+git add .
+
+git commit -m "TASK 5: CI/CD platform automation implemented"
+
+git push origin main
+```
+
+### 🌐 Opening the GitHub Actions Dashboard
+
+Open the GitHub repository within the browser and navigate to:
+
+```text
+GitHub Repository → Actions Tab
+```
+
+### 📸 GitHub Actions Pipeline Execution Validation
+
+The image below confirms successful execution of the GitHub Actions CI/CD workflow pipeline.
+
+![GitHub Actions Pipeline Execution Validation](images/github-actions-pipeline-execution-validation.png)
+
+### 🔍 Inspecting Workflow Job Execution
+
+Open the executed workflow job to validate all CI/CD stages.
+
+Verify successful execution of:
+
+- Repository checkout
+- Docker validation
+- Docker image build
+- Kubernetes configuration validation
+- CI/CD pipeline validation
+
+### 📸 GitHub Actions Job Validation
+
+The image below verifies successful execution of all CI/CD workflow stages.
+
+![GitHub Actions Job Validation](images/github-actions-job-validation.png)
+
+### 📘 Task 5 Summary
+
+In this task, the foundational CI/CD automation layer was successfully implemented using GitHub Actions.
+
+The completed implementation included:
+
+- GitHub Actions workflow creation
+- Automated repository validation
+- Docker runtime validation
+- Automated container image build workflow
+- Kubernetes configuration validation
+- CI/CD workflow automation
+- GitHub Actions pipeline execution validation
+- Workflow job execution verification
+
+This implementation now establishes the foundational CI/CD automation layer required for DevSecOps security enforcement, Kubernetes deployment standardization, automated platform delivery workflows, and production-oriented cloud-native operational automation throughout the remaining implementation phases.

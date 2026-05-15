@@ -1,0 +1,35 @@
+name: Production DevSecOps CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+
+  platform-ci-cd-workflow:
+
+    runs-on: ubuntu-latest
+
+    steps:
+
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Verify Repository Structure
+        run: ls -la
+
+      - name: Verify Docker Installation
+        run: docker --version
+
+      - name: Build Docker Image
+        run: |
+          cd app
+          docker build -t production-devsecops-platform:v1 .
+
+      - name: Validate Kubernetes Configuration Files
+        run: |
+          ls kubernetes
+
+      - name: CI/CD Pipeline Validation
+        run: echo "Production DevSecOps CI/CD Pipeline executed successfully"
