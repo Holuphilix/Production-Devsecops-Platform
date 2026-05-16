@@ -2733,9 +2733,7 @@ Run the following commands to commit and push the updated DevSecOps pipeline con
 
 ```bash
 git add .
-
 git commit -m "TASK 6: DevSecOps security enforcement integrated"
-
 git push origin main
 ```
 
@@ -2876,3 +2874,438 @@ The completed DevSecOps layer now provides the foundational security enforcement
 - CI/CD security hardening
 
 This implementation establishes the integrated DevSecOps security architecture that will support future observability integration, runtime monitoring, infrastructure automation, operational alerting, and production-oriented cloud-native security operations throughout the remaining platform engineering lifecycle.
+
+## 📊 Task 7 — Observability and Monitoring Integration
+
+### 🎯 Objective
+
+The objective of this task is to integrate observability and monitoring capabilities into the Kubernetes platform environment using Prometheus and Grafana.
+
+This phase establishes the foundational observability layer responsible for:
+
+- Infrastructure monitoring
+- Kubernetes metrics collection
+- Operational visibility
+- Platform telemetry
+- Workload monitoring
+- Runtime health visibility
+- Dashboard visualization
+
+The implementation focuses on deploying a production-oriented monitoring architecture capable of providing centralized visibility into Kubernetes operations, workload performance, platform health, and cloud-native infrastructure telemetry.
+
+This implementation transforms the platform from a deployment-focused DevSecOps environment into an observable operational ecosystem capable of supporting monitoring, incident visibility, troubleshooting workflows, and operational reliability engineering.
+
+### 🏗️ Architecture Overview
+
+The observability architecture introduces centralized monitoring and telemetry collection into the Kubernetes platform environment.
+
+The monitoring architecture includes:
+
+- Prometheus metrics collection
+- Grafana dashboard visualization
+- Kubernetes telemetry monitoring
+- Cluster health visibility
+- Workload monitoring
+- Runtime metrics aggregation
+
+This architecture improves:
+
+- Operational visibility
+- Incident detection
+- Infrastructure monitoring
+- Platform troubleshooting
+- Runtime observability
+- Reliability engineering
+
+The observability layer now becomes a core operational system responsible for continuously monitoring platform health, workload performance, Kubernetes activity, and infrastructure telemetry throughout the cloud-native environment.
+
+### ⚙️ Engineering Decisions
+
+Several engineering decisions were made during the observability implementation phase to support operational visibility, platform monitoring, infrastructure telemetry, and production-oriented cloud-native monitoring workflows.
+
+#### Why Prometheus Was Selected
+
+Prometheus was selected because it is the industry-standard monitoring system for Kubernetes and cloud-native infrastructure environments.
+
+Operational advantages include:
+
+- Kubernetes-native monitoring
+- Time-series metrics collection
+- Automated service discovery
+- Real-time telemetry aggregation
+- Scalable monitoring architecture
+- Cloud-native observability compatibility
+
+Prometheus provides centralized operational visibility into workloads, nodes, services, and infrastructure components across the Kubernetes platform environment.
+
+#### Why Grafana Was Selected
+
+Grafana was selected because it provides powerful dashboard visualization capabilities optimized for operational monitoring and cloud-native observability workflows.
+
+Operational benefits include:
+
+- Real-time dashboards
+- Infrastructure visualization
+- Metrics analytics
+- Operational telemetry visibility
+- Alert visualization
+- Monitoring centralization
+
+Grafana improves operational awareness by transforming infrastructure telemetry into visually accessible monitoring dashboards.
+
+#### Why Observability Is Important
+
+Modern cloud-native platforms require continuous operational visibility in order to maintain:
+
+- Infrastructure reliability
+- Workload health
+- Incident awareness
+- Platform stability
+- Runtime performance
+- Deployment observability
+
+Without observability tooling, operational troubleshooting becomes significantly more difficult within distributed Kubernetes environments.
+
+Observability therefore becomes essential for production-oriented platform engineering operations.
+
+### 📂 Navigating into the Monitoring Directory
+
+Run the following command to move into the monitoring configuration directory.
+
+```bash
+cd monitoring
+```
+
+### 🛠️ Installing Helm Package Manager
+
+Helm is required for deploying Prometheus and Grafana into the Kubernetes environment.
+
+Run the following command to download and install Helm.
+
+```bash
+curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+```
+
+Helm simplifies Kubernetes package management by automating deployment, configuration, and lifecycle management for cloud-native applications.
+
+### 📸 Helm Installation Validation
+
+The output below confirms successful installation of the Helm package manager within the Ubuntu platform environment.
+
+![Helm Installation Validation](images/helm-installation-validation.png)
+
+### ✅ Verifying Helm Installation
+
+Run the following command to validate the Helm installation.
+
+```bash
+helm version
+```
+
+### 📸 Helm Version Validation
+
+The output below confirms successful validation of the Helm package manager installation.
+
+![Helm Version Validation](images/helm-version-validation.png)
+
+### 📦 Adding the Prometheus Community Helm Repository
+
+Run the following command to add the Prometheus Helm repository.
+
+```bash
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+```
+
+### 📸 Prometheus Repository Addition Validation
+
+The output below confirms successful addition of the Prometheus community Helm repository.
+
+![Prometheus Repository Addition Validation](images/prometheus-repository-addition-validation.png)
+
+### 🔄 Updating Helm Repositories
+
+Run the following command to update all configured Helm repositories.
+
+```bash
+helm repo update
+```
+
+Updating Helm repositories ensures the latest chart versions and deployment configurations are available.
+
+### 📸 Helm Repository Update Validation
+
+The output below confirms successful update of the configured Helm repositories.
+
+![Helm Repository Update Validation](images/helm-repository-update-validation.png)
+
+### 📊 Deploying Prometheus Monitoring Stack
+
+Run the following command to deploy Prometheus into the Kubernetes environment.
+
+```bash
+helm install prometheus prometheus-community/kube-prometheus-stack \
+  --namespace monitoring \
+  --create-namespace
+```
+
+This deployment installs:
+
+- Prometheus server
+- Grafana dashboards
+- Alertmanager
+- Kubernetes monitoring exporters
+- Node monitoring components
+- Cluster telemetry services
+
+The monitoring stack now begins collecting infrastructure and Kubernetes telemetry directly from the cluster environment.
+
+### 📸 Prometheus Stack Deployment Validation
+
+The output below confirms successful deployment of the Prometheus monitoring stack into the Kubernetes cluster.
+
+![Prometheus Stack Deployment Validation](images/prometheus-stack-deployment-validation.png)
+
+### 📦 Verifying Monitoring Namespace Resources
+
+Run the following command to verify monitoring workloads.
+
+```bash
+kubectl get pods -n monitoring
+```
+
+This validation confirms successful deployment of Prometheus, Grafana, and monitoring infrastructure components.
+
+### 📸 Monitoring Namespace Pod Validation
+
+The output below verifies successful deployment of monitoring workloads within the Kubernetes monitoring namespace.
+
+![Monitoring Namespace Pod Validation](images/monitoring-namespace-pod-validation.png)
+
+### 🌐 Verifying Monitoring Services
+
+Run the following command to validate monitoring services.
+
+```bash
+kubectl get svc -n monitoring
+```
+
+This validation confirms successful exposure of Prometheus and Grafana services inside the Kubernetes environment.
+
+### 📸 Monitoring Service Validation
+
+The output below confirms successful deployment of monitoring service resources.
+
+![Monitoring Service Validation](images/monitoring-service-validation.png)
+
+### 🔑 Retrieving the Grafana Admin Password
+
+Run the following command to retrieve the Grafana administrative password.
+
+```bash
+kubectl get secret prometheus-grafana -n monitoring \
+-o jsonpath="{.data.admin-password}" | base64 --decode
+```
+
+This credential will be required for accessing the Grafana dashboard interface.
+
+### 📸 Grafana Password Retrieval Validation
+
+The output below confirms successful retrieval of the Grafana administrative credentials.
+
+![Grafana Password Retrieval Validation](images/grafana-password-retrieval-validation.png)
+
+### 🌐 Exposing the Grafana Dashboard Locally
+
+Run the following command to expose Grafana locally through port forwarding.
+
+```bash
+kubectl port-forward svc/prometheus-grafana 3001:80 -n monitoring
+```
+
+This operation exposes the Grafana dashboard locally for browser accessibility and monitoring visualization validation.
+
+### 📸 Grafana Port Forward Validation
+
+The output below confirms successful Grafana dashboard exposure through Kubernetes port forwarding.
+
+![Grafana Port Forward Validation](images/grafana-port-forward-validation.png)
+
+### 🌐 Opening the Grafana Dashboard
+
+Open the following URL within the browser.
+
+```text
+http://localhost:3001
+```
+
+Use the following credentials:
+
+```text
+Username: admin
+Password: <retrieved-password>
+```
+
+This dashboard provides centralized operational visibility into the Kubernetes monitoring environment.
+
+### 📸 Grafana Dashboard Accessibility Validation
+
+The image below confirms successful browser accessibility of the Grafana monitoring dashboard.
+
+![Grafana Dashboard Accessibility Validation](images/grafana-dashboard-accessibility-validation.png)
+
+### 📊 Exploring Kubernetes Monitoring Dashboards
+
+Inside Grafana:
+
+Navigate to:
+
+```text
+Dashboards → Kubernetes
+```
+
+Inspect available dashboards including:
+
+- Kubernetes Cluster Monitoring
+- Node Resource Usage
+- Pod Metrics
+- CPU Utilization
+- Memory Utilization
+- Cluster Health Visibility
+
+These dashboards provide operational telemetry visibility across the Kubernetes platform environment.
+
+### 📸 Kubernetes Dashboard Validation
+
+The image below verifies successful visualization of Kubernetes operational metrics within Grafana dashboards.
+
+![Kubernetes Dashboard Validation](images/kubernetes-dashboard-validation.png)
+
+### 🔍 Verifying Prometheus Targets
+
+Run the following command to expose the Prometheus dashboard locally.
+
+```bash
+kubectl port-forward svc/prometheus-kube-prometheus-prometheus 9090:9090 -n monitoring
+```
+
+### 📸 Prometheus Port Forward Validation
+
+The output below confirms successful Prometheus dashboard exposure.
+
+![Prometheus Port Forward Validation](images/prometheus-port-forward-validation.png)
+
+### 🌐 Opening the Prometheus Dashboard
+
+Open the following URL within the browser.
+
+```text
+http://localhost:9090
+```
+
+Navigate to:
+
+```text
+Status → Targets
+```
+
+Verify that monitoring targets are operational and actively exporting metrics.
+
+### 📸 Prometheus Target Validation
+
+The image below confirms successful Prometheus target discovery and metrics collection within the Kubernetes environment.
+
+![Prometheus Target Validation](images/prometheus-target-validation.png)
+
+### 📊 Operational Considerations
+
+Several operational considerations were incorporated during the observability implementation phase.
+
+#### Continuous Monitoring
+
+The monitoring stack continuously collects infrastructure telemetry and workload metrics from the Kubernetes environment.
+
+This improves:
+
+- Incident detection
+- Runtime visibility
+- Infrastructure awareness
+- Platform reliability
+
+#### Centralized Operational Visibility
+
+Grafana centralizes monitoring visibility into a single operational dashboard environment.
+
+This improves troubleshooting efficiency and operational awareness.
+
+#### Kubernetes Telemetry Integration
+
+Prometheus automatically integrates with Kubernetes workloads, services, nodes, and exporters to provide cloud-native telemetry visibility.
+
+#### Production-Oriented Monitoring Architecture
+
+The observability architecture closely resembles production monitoring systems commonly used within real-world Kubernetes platform engineering environments.
+
+### 🔐 Security Considerations
+
+Several security considerations were included during observability integration.
+
+These include:
+
+- Namespace isolation
+- Controlled dashboard exposure
+- Kubernetes service separation
+- Monitoring resource isolation
+- Operational access control
+
+Future platform phases may further improve observability security through:
+
+- Role-Based Access Control (RBAC)
+- Secure ingress exposure
+- TLS encryption
+- Authentication integrations
+- Alert security routing
+
+### 📈 Observability Benefits
+
+The observability stack now provides:
+
+- Kubernetes workload visibility
+- Infrastructure telemetry
+- Platform health monitoring
+- Runtime performance visibility
+- Monitoring centralization
+- Dashboard analytics
+- Operational troubleshooting support
+- Reliability engineering visibility
+
+These capabilities significantly improve operational maturity across the platform engineering ecosystem.
+
+### 📘 Task 7 Summary
+
+In this task, the foundational observability and monitoring layer was successfully integrated into the Kubernetes platform environment using Prometheus and Grafana.
+
+The completed implementation included:
+
+- Helm package manager installation
+- Prometheus Helm repository integration
+- Prometheus monitoring stack deployment
+- Grafana dashboard deployment
+- Kubernetes telemetry collection
+- Monitoring service exposure
+- Grafana dashboard accessibility validation
+- Kubernetes operational metrics visualization
+- Prometheus target validation
+- Observability workflow integration
+
+The completed observability architecture now provides the foundational monitoring ecosystem responsible for:
+
+- Infrastructure telemetry collection
+- Kubernetes monitoring
+- Runtime visibility
+- Operational observability
+- Dashboard visualization
+- Incident detection
+- Reliability engineering support
+- Platform operational awareness
+
+This implementation establishes the production-oriented observability layer that will support future alert integrations, operational analytics, runtime monitoring, infrastructure troubleshooting, and cloud-native reliability engineering workflows throughout the remaining platform engineering lifecycle.
