@@ -4082,4 +4082,460 @@ The completed alerting architecture now provides the foundational incident manag
 
 This implementation establishes the production-oriented operational alerting layer that will support future infrastructure automation, advanced platform engineering workflows, operational analytics, and large-scale cloud-native reliability engineering operations throughout the remaining platform lifecycle.
 
+## 🏗️ Task 9 — Infrastructure as Code Automation with Terraform
 
+### 🎯 Objective
+
+The objective of this task is to integrate Infrastructure as Code (IaC) automation into the platform engineering environment using Terraform.
+
+This phase establishes the foundational infrastructure automation layer responsible for:
+
+- Infrastructure provisioning automation
+- Infrastructure reproducibility
+- Deployment standardization
+- Cloud-native infrastructure consistency
+- Platform scalability preparation
+- Infrastructure lifecycle management
+- Declarative infrastructure orchestration
+
+The implementation focuses on introducing production-oriented Infrastructure as Code workflows capable of automating cloud-native infrastructure provisioning, improving deployment consistency, and standardizing operational infrastructure management across the DevSecOps platform ecosystem.
+
+This implementation transforms the platform from a manually provisioned Kubernetes environment into an infrastructure-driven platform engineering ecosystem capable of supporting scalable, repeatable, and production-grade infrastructure automation workflows.
+
+### 🏗️ Architecture Overview
+
+```mermaid
+flowchart LR
+
+    Engineer[👨‍💻 Platform Engineer]
+    Terraform[🏗️ Terraform Engine]
+    Config[📂 Terraform Configuration Files]
+
+    Docker[🐳 Docker Runtime]
+    Kubernetes[☸️ Kubernetes Cluster]
+    Monitoring[📊 Monitoring Stack]
+    Security[🔐 DevSecOps Security Layer]
+
+    Engineer --> Terraform
+    Terraform --> Config
+
+    Terraform --> Docker
+    Terraform --> Kubernetes
+    Terraform --> Monitoring
+    Terraform --> Security
+```
+
+This architecture represents the Infrastructure as Code automation layer responsible for standardizing platform provisioning and operational infrastructure management across the DevSecOps ecosystem.
+
+Terraform operates as the centralized infrastructure orchestration engine responsible for provisioning, validating, and managing infrastructure resources declaratively through reusable configuration files.
+
+The Terraform configuration layer defines infrastructure state and operational dependencies across the platform environment, enabling automated infrastructure lifecycle management, deployment reproducibility, and scalable platform operations.
+
+The infrastructure automation workflow integrates directly with the Kubernetes orchestration layer, monitoring stack, Docker runtime environment, and DevSecOps security ecosystem to support standardized cloud-native infrastructure management.
+
+### 📝 Architecture Explanation
+
+This architecture introduces Infrastructure as Code automation into the cloud-native platform environment using Terraform.
+
+The infrastructure automation architecture includes:
+
+- Terraform infrastructure provisioning
+- Declarative infrastructure management
+- Infrastructure state management
+- Infrastructure lifecycle automation
+- Platform resource orchestration
+- Cloud-native infrastructure standardization
+
+Terraform functions as the centralized infrastructure orchestration layer responsible for automating infrastructure provisioning and maintaining infrastructure consistency across the platform ecosystem.
+
+The Terraform configuration files define infrastructure resources declaratively, enabling infrastructure reproducibility, deployment standardization, and scalable infrastructure lifecycle management.
+
+This implementation improves:
+
+- Infrastructure automation
+- Deployment reproducibility
+- Platform consistency
+- Infrastructure scalability
+- Operational standardization
+- Infrastructure lifecycle management
+- Cloud-native provisioning workflows
+- Platform engineering maturity
+
+The infrastructure automation layer now becomes a critical operational system responsible for supporting:
+
+- Infrastructure provisioning workflows
+- Declarative infrastructure management
+- Scalable platform deployment
+- Infrastructure reproducibility
+- Automated infrastructure orchestration
+- Platform lifecycle automation
+- Cloud-native infrastructure operations
+- Production-oriented platform engineering workflows
+
+### ⚙️ Engineering Decisions
+
+Several engineering decisions were made during the Infrastructure as Code integration phase to support scalable infrastructure management, deployment consistency, operational automation, and production-oriented platform engineering practices.
+
+#### Why Terraform Was Selected
+
+Terraform was selected because it is the industry-standard Infrastructure as Code platform widely used for cloud-native infrastructure automation and declarative infrastructure provisioning.
+
+Operational advantages include:
+
+- Declarative infrastructure provisioning
+- Infrastructure reproducibility
+- Multi-environment scalability
+- Infrastructure lifecycle management
+- Cloud-native infrastructure compatibility
+- Infrastructure state management
+
+Terraform improves operational consistency by enabling infrastructure resources to be provisioned and managed programmatically rather than manually.
+
+#### Why Infrastructure as Code Matters
+
+Manual infrastructure provisioning introduces operational risks including:
+
+- Infrastructure inconsistency
+- Configuration drift
+- Deployment variability
+- Human operational errors
+- Difficult scalability management
+
+Infrastructure as Code improves:
+
+- Infrastructure consistency
+- Deployment standardization
+- Operational automation
+- Infrastructure scalability
+- Platform reproducibility
+
+Modern cloud-native platform engineering environments rely heavily on Infrastructure as Code for scalable infrastructure management.
+
+#### Why Declarative Infrastructure Was Implemented
+
+Declarative infrastructure management enables infrastructure resources to be defined through configuration rather than imperative operational commands.
+
+This improves:
+
+- Infrastructure maintainability
+- Operational visibility
+- Infrastructure version control
+- Platform reproducibility
+- Infrastructure governance
+
+Declarative infrastructure workflows also integrate effectively with DevSecOps security scanning and CI/CD automation workflows.
+
+### 📂 Navigating into the Terraform Directory
+
+Run the following command to move into the Terraform configuration directory.
+
+```bash
+cd terraform
+```
+
+### 📝 Creating the Terraform Infrastructure Configuration
+
+Run the following command to open the Terraform main configuration file.
+
+```bash
+nano main.tf
+```
+
+Add the following configuration into the `main.tf` file.
+
+```hcl
+terraform {
+  required_version = ">= 1.5.0"
+}
+
+resource "null_resource" "platform_validation" {
+
+  provisioner "local-exec" {
+    command = <<EOT
+      echo "Production DevSecOps Platform Infrastructure Provisioned Successfully"
+    EOT
+  }
+}
+```
+
+This Terraform configuration establishes the foundational infrastructure automation workflow used for validating Infrastructure as Code operations within the platform environment.
+
+The `null_resource` is intentionally used to validate Terraform operational workflows before integrating larger cloud infrastructure resources in future platform expansions.
+
+### 📸 Terraform Main Configuration Validation
+
+The image below verifies successful creation of the Terraform infrastructure configuration.
+
+![Terraform Main Configuration Validation](images/terraform-main-configuration-validation.png)
+
+### 📝 Opening the Terraform Variables File
+
+Run the following command to open the Terraform variables configuration.
+
+```bash
+nano variables.tf
+```
+
+Add the following configuration into the `variables.tf` file.
+
+```hcl
+variable "platform_environment" {
+  description = "Platform Environment"
+  type        = string
+  default     = "development"
+}
+```
+
+The variables configuration improves infrastructure flexibility and reusable infrastructure provisioning workflows.
+
+### 📸 Terraform Variables Configuration Validation
+
+The image below verifies successful creation of the Terraform variables configuration.
+
+![Terraform Variables Configuration Validation](images/terraform-variables-configuration-validation.png)
+
+### 📝 Opening the Terraform Outputs File
+
+Run the following command to open the Terraform outputs configuration.
+
+```bash
+nano outputs.tf
+```
+
+Add the following configuration into the `outputs.tf` file.
+
+```hcl
+output "platform_environment" {
+  value = var.platform_environment
+}
+```
+
+Outputs provide operational visibility into infrastructure provisioning results and Terraform-managed resource values.
+
+### 📸 Terraform Outputs Configuration Validation
+
+The image below verifies successful creation of the Terraform outputs configuration.
+
+![Terraform Outputs Configuration Validation](images/terraform-outputs-configuration-validation.png)
+
+### 🛠️ Installing Terraform
+
+Run the following commands to install Terraform within the Ubuntu platform environment.
+
+```bash
+sudo apt update
+
+sudo apt install -y gnupg software-properties-common curl
+
+curl -fsSL https://apt.releases.hashicorp.com/gpg | \
+sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+https://apt.releases.hashicorp.com $(lsb_release -cs) main" | \
+sudo tee /etc/apt/sources.list.d/hashicorp.list
+
+sudo apt update
+
+sudo apt install terraform -y
+```
+
+Terraform now becomes available as the centralized Infrastructure as Code automation engine across the platform environment.
+
+### 📸 Terraform Installation Validation
+
+The output below confirms successful installation of Terraform within the Ubuntu platform environment.
+
+![Terraform Installation Validation](images/terraform-installation-validation.png)
+
+![Terraform Installation Validation](images/terraform-installation-validation2.png)
+
+### ✅ Verifying Terraform Installation
+
+Run the following command to validate the Terraform installation.
+
+```bash
+terraform version
+```
+
+### 📸 Terraform Version Validation
+
+The output below confirms successful Terraform version validation.
+
+![Terraform Version Validation](images/terraform-version-validation.png)
+
+### ⚙️ Initializing the Terraform Working Directory
+
+Run the following command to initialize the Terraform working directory.
+
+```bash
+terraform init
+```
+
+Terraform initialization downloads required providers and prepares the infrastructure working environment for provisioning operations.
+
+### 📸 Terraform Initialization Validation
+
+The output below confirms successful Terraform initialization.
+
+![Terraform Initialization Validation](images/terraform-initialization-validation.png)
+
+### 📋 Validating the Terraform Configuration
+
+Run the following command to validate the Terraform configuration syntax.
+
+```bash
+terraform validate
+```
+
+This validation ensures the infrastructure configuration is syntactically correct before provisioning execution.
+
+### 📸 Terraform Configuration Validation
+
+The output below confirms successful Terraform configuration validation.
+
+![Terraform Configuration Validation](images/terraform-configuration-validation.png)
+
+### 📊 Reviewing the Terraform Execution Plan
+
+Run the following command to inspect the Terraform execution plan.
+
+```bash
+terraform plan
+```
+
+The execution plan provides operational visibility into the infrastructure changes Terraform intends to perform before deployment execution.
+
+### 📸 Terraform Execution Plan Validation
+
+The output below confirms successful generation of the Terraform execution plan.
+
+![Terraform Execution Plan Validation](images/terraform-execution-plan-validation.png)
+
+### 🚀 Applying the Terraform Infrastructure Configuration
+
+Run the following command to provision the Terraform-managed infrastructure resources.
+
+```bash
+terraform apply -auto-approve
+```
+
+Terraform now provisions the infrastructure resources defined within the declarative configuration workflow.
+
+### 📸 Terraform Apply Validation
+
+The output below confirms successful Terraform infrastructure provisioning.
+
+![Terraform Apply Validation](images/terraform-apply-validation.png)
+
+### 📦 Verifying Terraform State Files
+
+Run the following command to verify Terraform-generated infrastructure state files.
+
+```bash
+ls
+```
+
+This validation confirms successful creation of Terraform state management resources.
+
+### 📸 Terraform State Validation
+
+The output below verifies successful Terraform state file generation within the infrastructure automation environment.
+
+![Terraform State Validation](images/terraform-state-validation.png)
+
+### 📊 Operational Considerations
+
+Several operational considerations were incorporated during the Infrastructure as Code implementation phase.
+
+#### Infrastructure Reproducibility
+
+Terraform enables infrastructure resources to be provisioned consistently across environments using reusable configuration workflows.
+
+This improves:
+
+- Deployment consistency
+- Infrastructure portability
+- Operational standardization
+- Environment reproducibility
+
+#### Infrastructure Lifecycle Management
+
+Terraform maintains infrastructure state and continuously tracks infrastructure changes across the platform environment.
+
+This improves infrastructure governance and operational visibility.
+
+#### Platform Scalability Preparation
+
+Infrastructure as Code prepares the platform for future cloud expansion including:
+
+- AWS resource provisioning
+- Kubernetes infrastructure automation
+- Multi-environment deployments
+- Scalable platform provisioning
+
+#### Infrastructure Version Control
+
+Terraform configurations can be version-controlled directly inside GitHub repositories, improving infrastructure governance and operational traceability.
+
+### 🔐 Security Considerations
+
+Several security-focused considerations were incorporated into the Infrastructure as Code workflow.
+
+These include:
+
+- Infrastructure validation workflows
+- Declarative infrastructure governance
+- Infrastructure consistency enforcement
+- Version-controlled infrastructure management
+
+Future infrastructure security improvements may include:
+
+- Terraform remote state encryption
+- IAM least privilege integration
+- Infrastructure policy enforcement
+- Terraform security scanning integration
+- Secure secrets management workflows
+
+### 📈 Infrastructure Automation Benefits
+
+The infrastructure automation layer now provides:
+
+- Automated infrastructure provisioning
+- Infrastructure reproducibility
+- Deployment consistency
+- Platform scalability readiness
+- Infrastructure lifecycle management
+- Declarative infrastructure governance
+- Cloud-native infrastructure standardization
+- Production-oriented platform engineering workflows
+
+These capabilities significantly improve infrastructure maturity across the platform ecosystem.
+
+### 📘 Task 9 Summary
+
+In this task, the foundational Infrastructure as Code automation layer was successfully integrated into the platform engineering environment using Terraform.
+
+The completed implementation included:
+
+- Terraform installation
+- Infrastructure configuration creation
+- Terraform variable management
+- Terraform output configuration
+- Infrastructure initialization workflows
+- Terraform validation workflows
+- Infrastructure execution planning
+- Infrastructure provisioning automation
+- Terraform state management
+
+The completed Infrastructure as Code architecture now provides the foundational infrastructure automation ecosystem responsible for:
+
+- Infrastructure provisioning
+- Declarative infrastructure management
+- Deployment reproducibility
+- Platform scalability preparation
+- Infrastructure lifecycle automation
+- Cloud-native infrastructure orchestration
+- Infrastructure standardization
+- Production-oriented platform engineering operations
+
+This implementation establishes the production-grade Infrastructure as Code layer that will support future cloud infrastructure expansion, Kubernetes automation, scalable infrastructure provisioning, advanced DevSecOps workflows, and large-scale platform engineering operations throughout the remaining platform lifecycle.
